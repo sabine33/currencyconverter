@@ -44,8 +44,11 @@
                     <input id="amount" class="form-control form-control-lg" type="text" name="amount" placeholder="Amount"
                         v-model="amount"></div>
                 <div class="form-group">
-                    <h1 class="text-center" style="padding-top:20px;">{{amount+ " "+from}}
-                        : {{result + " "+to}}</h1>
+                    <h1 v-if="isLoaded && result!=`NaN`" class="text-center" style="padding-top:20px;">
+                        {{amount+" "+from+" : "+result + " "+to}}
+                    </h1>
+                    <h1 v-if="!isLoaded || result==`NaN`" class="text-center" style="padding-top:20px;">Unable to
+                        Convert</h1>
                 </div>
             </form>
         </div>

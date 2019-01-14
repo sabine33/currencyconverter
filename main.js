@@ -11,6 +11,7 @@ new Vue({
         isLoaded: false
     },
     computed: {
+        //return conversion result
         result() {
             if (!this.isLoaded || this.from == undefined || this.to == undefined || this.amount < 0 || this.amount == undefined) return "NaN"
             return ((this.exchange_rates[this.to] / this.exchange_rates[this.from]) * Number(this.amount)).toFixed(2);
@@ -20,7 +21,6 @@ new Vue({
         axios
             .get(url)
             .then(response => {
-
                 this.date = response.data.date;
                 this.base = response.data.base;
                 this.exchange_rates = response.data.rates;
