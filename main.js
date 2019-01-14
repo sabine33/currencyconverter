@@ -25,7 +25,8 @@ new Vue({
                 this.base = response.data.base;
                 this.exchange_rates = response.data.rates;
                 //user defined rate
-                this.update();
+                this.appyAddons();
+                //update isLoaded
                 this.isLoaded = true;
 
             }).catch(error => {
@@ -34,7 +35,9 @@ new Vue({
             });
     },
     methods: {
-        update() {
+
+        //add custom conversion rates
+        appyAddons() {
             this.exchange_rates['NPR'] = this.exchange_rates['INR'] * 1.6;
             this.exchange_rates['EUR'] = 1;
         }
